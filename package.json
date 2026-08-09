@@ -1,0 +1,13 @@
+{
+  "name": "civicsense",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI-powered civic complaint management system",
+  "scripts": {
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "build:frontend": "npm --prefix frontend run build",
+    "check:backend-imports": "node --input-type=module --eval \"await import('./backend/src/routes/authRoutes.js'); await import('./backend/src/routes/complaintRoutes.js'); await import('./backend/src/routes/dashboardRoutes.js'); console.log('backend imports ok');\""
+  }
+}
+
