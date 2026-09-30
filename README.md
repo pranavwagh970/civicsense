@@ -1,6 +1,6 @@
-# CivicSense
+# LokSetu
 
-Village complaint management prototype for Parali.
+Urban civic-complaint management prototype for Pune Municipal Corporation (PMC).
 
 Phase 1 contains the MERN foundation:
 
@@ -10,7 +10,7 @@ Phase 1 contains the MERN foundation:
 - JWT authentication
 - Citizen complaint submission and tracking
 - Admin complaint management and dashboard stats
-- Marathi-first multilingual UI customized for Parali village
+- Marathi-first multilingual UI customized for Pune citizens and PMC officers
 
 ## Project structure
 
@@ -52,6 +52,6 @@ npm run build:frontend
 ## Demo flow
 
 1. Register as a citizen.
-2. Submit a Parali village complaint in Marathi, such as a pothole, water supply, streetlight, drainage, health, or school issue.
+2. Submit a Pune civic complaint in Marathi, such as a pothole, water supply, streetlight, garbage, drainage, or health issue.
 3. Register an admin using the `ADMIN_SETUP_CODE` from backend `.env`.
 4. Open `/admin` to use the dedicated officer/admin panel and update complaint statuses.

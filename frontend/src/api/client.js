@@ -5,7 +5,7 @@ const api = axios.create({
 });
 
 api.interceptors.request.use((config) => {
-  const auth = JSON.parse(localStorage.getItem('civicsense_auth') || 'null');
+  const auth = JSON.parse(localStorage.getItem('loksetu_auth') || localStorage.getItem('civicsense_auth') || 'null');
 
   if (auth?.token) {
     config.headers.Authorization = `Bearer ${auth.token}`;
@@ -15,4 +15,3 @@ api.interceptors.request.use((config) => {
 });
 
 export default api;
-

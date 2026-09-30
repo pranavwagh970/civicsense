@@ -1,7 +1,8 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
 const LanguageContext = createContext(null);
-const storageKey = 'civicsense_language';
+const storageKey = 'loksetu_language';
+const legacyStorageKey = 'civicsense_language';
 
 export const LANGUAGES = {
   mr: 'मराठी',
@@ -14,8 +15,8 @@ export const PRIORITIES = ['Low', 'Medium', 'High'];
 
 const dictionaries = {
   mr: {
-    appName: 'CivicSense',
-    appSubtitle: 'परळी ग्राम तक्रार व्यवस्थापन',
+    appName: 'LokSetu',
+    appSubtitle: 'पुणे महानगरपालिका तक्रार व्यवस्थापन',
     nav: {
       dashboard: 'डॅशबोर्ड',
       adminPanel: 'अधिकारी पॅनेल',
@@ -51,18 +52,18 @@ const dictionaries = {
       High: 'जास्त',
     },
     home: {
-      eyebrow: 'परळी गावासाठी प्रोटोटाइप',
-      title: 'परळी गावातील तक्रारी नोंदवा, पाहा आणि सोडवा.',
+      eyebrow: 'पुणे महानगरपालिकेसाठी प्रोटोटाइप',
+      title: 'पुणे शहरातील नागरी तक्रारी नोंदवा, पाहा आणि सोडवा.',
       description:
-        'परळी गावातील नागरिक मराठीत तक्रार नोंदवू शकतात आणि ग्रामपंचायत अधिकारी एका सोप्या डॅशबोर्डमधून तक्रारींची स्थिती बदलू शकतात. हा प्रोटोटाइप परळी गावातील स्थानिक समस्या व्यवस्थापनासाठी तयार केला आहे.',
+        'पुणे शहरातील नागरिक मराठीत तक्रार नोंदवू शकतात आणि पुणे महानगरपालिका अधिकारी एका सोप्या डॅशबोर्डमधून तक्रारींची स्थिती बदलू शकतात. हा प्रोटोटाइप शहरातील नागरी समस्या व्यवस्थापनासाठी तयार केला आहे.',
       primaryLoggedIn: 'डॅशबोर्ड उघडा',
       primaryLoggedOut: 'तक्रार सुरू करा',
       secondary: 'लॉगिन',
       cardTitle: 'प्रोटोटाइपमध्ये काय आहे',
       features: [
-        'परळी गावासाठी मराठी आणि इंग्रजी भाषा पर्याय',
+        'पुणे शहरासाठी मराठी आणि इंग्रजी भाषा पर्याय',
         'नागरिक आणि अधिकारी भूमिका',
-        'परळीतील रस्ता, पाणी, कचरा, गटार, आरोग्य अशा स्थानिक तक्रारी',
+        'पुण्यातील रस्ता, पाणी, कचरा, गटार, आरोग्य अशा नागरी तक्रारी',
         'तक्रार स्थिती ट्रॅकिंग आणि अधिकारी व्यवस्थापन',
       ],
     },
@@ -93,13 +94,13 @@ const dictionaries = {
       submitSubtitle:
         'या प्रोटोटाइपमध्ये तक्रारीचे तपशील, प्रकार, प्राधान्य आणि ठिकाण नोंदवता येते. फोटो अपलोड आणि नकाशा पुढील टप्प्यात जोडता येईल.',
       title: 'शीर्षक',
-      titlePlaceholder: 'परळी मुख्य रस्त्यावर मोठा खड्डा आहे',
+      titlePlaceholder: 'एफ. सी. रोडवर मोठा खड्डा आहे',
       description: 'तपशील',
       descriptionPlaceholder: 'समस्या, जवळची खूण आणि तातडी याबद्दल माहिती द्या.',
       category: 'तक्रारीचा प्रकार',
       priority: 'प्राधान्य',
       address: 'पत्ता / ठिकाण',
-      addressPlaceholder: 'परळी ग्रामपंचायत कार्यालयाजवळ, वार्ड २',
+      addressPlaceholder: 'एफ. सी. रोड, शिवाजीनगर, पुणे',
       latitude: 'अक्षांश',
       longitude: 'रेखांश',
       optional: 'ऐच्छिक',
@@ -140,12 +141,12 @@ const dictionaries = {
       },
     },
     adminPanel: {
-      eyebrow: 'परळी ग्रामपंचायत अधिकारी पॅनेल',
+      eyebrow: 'पुणे महानगरपालिका अधिकारी पॅनेल',
       title: 'तक्रारींचे नियंत्रण केंद्र',
       subtitle:
-        'परळी गावातील सर्व तक्रारी, प्राधान्य आणि स्थिती एका ठिकाणी पाहा. अधिकारी येथून तक्रारी तपासणीसाठी घेऊ शकतात किंवा सोडवले म्हणून अपडेट करू शकतात.',
+        'पुणे शहरातील सर्व तक्रारी, प्राधान्य आणि स्थिती एका ठिकाणी पाहा. अधिकारी येथून तक्रारी तपासणीसाठी घेऊ शकतात किंवा सोडवले म्हणून अपडेट करू शकतात.',
       demoArea: 'डेमो क्षेत्र',
-      demoAreaValue: 'परळी गाव · ग्रामपंचायत परळी',
+      demoAreaValue: 'पुणे शहर · पुणे महानगरपालिका',
       total: 'एकूण तक्रारी',
       complaintQueue: 'तक्रार यादी',
       queueSubtitle: 'तक्रारी फिल्टर करा, नागरिक तपशील पाहा आणि स्थिती बदला.',
@@ -157,8 +158,8 @@ const dictionaries = {
     },
   },
   en: {
-    appName: 'CivicSense',
-    appSubtitle: 'Parali village complaint management',
+    appName: 'LokSetu',
+    appSubtitle: 'Pune Municipal Corporation complaint management',
     nav: {
       dashboard: 'Dashboard',
       adminPanel: 'Admin Panel',
@@ -194,16 +195,16 @@ const dictionaries = {
       High: 'High',
     },
     home: {
-      eyebrow: 'Prototype for Parali village',
-      title: 'Report, track, and resolve complaints from Parali village.',
+      eyebrow: 'Prototype for Pune Municipal Corporation',
+      title: 'Report, track, and resolve civic complaints across Pune.',
       description:
-        'Citizens from Parali village can submit complaints in Marathi, while Gram Panchayat officers can manage status from a simple dashboard. This prototype is designed for local village-level issue management.',
+        'Pune citizens can submit complaints in Marathi, while Pune Municipal Corporation officers can manage complaint status from a simple dashboard. This prototype is designed for urban civic issue management.',
       primaryLoggedIn: 'Go to dashboard',
       primaryLoggedOut: 'Start reporting',
       secondary: 'Login',
       cardTitle: 'What the prototype includes',
       features: [
-        'Marathi and English language switch for Parali village',
+        'Marathi and English language switch for Pune citizens',
         'Citizen and officer roles',
         'Local issue categories like roads, water, garbage, drainage, and health',
         'Complaint status tracking and officer-side management',
@@ -236,13 +237,13 @@ const dictionaries = {
       submitSubtitle:
         'This prototype captures complaint details, category, priority, and location. Photo upload and map pinning can be added in the next phase.',
       title: 'Title',
-      titlePlaceholder: 'Large pothole on Parali main road',
+      titlePlaceholder: 'Large pothole on FC Road, Pune',
       description: 'Description',
       descriptionPlaceholder: 'Describe the issue, nearby landmarks, and urgency.',
       category: 'Complaint type',
       priority: 'Priority',
       address: 'Address or landmark',
-      addressPlaceholder: 'Near Parali Gram Panchayat office, Ward 2',
+      addressPlaceholder: 'FC Road, Shivajinagar, Pune',
       latitude: 'Latitude',
       longitude: 'Longitude',
       optional: 'Optional',
@@ -283,12 +284,12 @@ const dictionaries = {
       },
     },
     adminPanel: {
-      eyebrow: 'Parali Gram Panchayat officer panel',
+      eyebrow: 'Pune Municipal Corporation officer panel',
       title: 'Complaint control center',
       subtitle:
-        'View every Parali village complaint, priority, and status in one place. Officers can move complaints into review or mark them as resolved from here.',
+        'View every Pune civic complaint, priority, and status in one place. PMC officers can move complaints into review or mark them as resolved from here.',
       demoArea: 'Demo area',
-      demoAreaValue: 'Parali village · Parali Gram Panchayat',
+      demoAreaValue: 'Pune city · Pune Municipal Corporation',
       total: 'Total complaints',
       complaintQueue: 'Complaint queue',
       queueSubtitle: 'Filter complaints, review citizen details, and update status.',
@@ -305,7 +306,7 @@ const getNestedValue = (source, path) =>
   path.split('.').reduce((current, key) => (current && current[key] !== undefined ? current[key] : undefined), source);
 
 export const LanguageProvider = ({ children }) => {
-  const [language, setLanguage] = useState(() => localStorage.getItem(storageKey) || 'mr');
+  const [language, setLanguage] = useState(() => localStorage.getItem(storageKey) || localStorage.getItem(legacyStorageKey) || 'mr');
 
   useEffect(() => {
     localStorage.setItem(storageKey, language);

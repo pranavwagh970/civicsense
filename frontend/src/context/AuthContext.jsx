@@ -3,13 +3,17 @@ import api from '../api/client.js';
 
 const AuthContext = createContext(null);
 
-const storageKey = 'civicsense_auth';
+const storageKey = 'loksetu_auth';
+const legacyStorageKey = 'civicsense_auth';
 
 export const AuthProvider = ({ children }) => {
-  const [auth, setAuth] = useState(() => JSON.parse(localStorage.getItem(storageKey) || 'null'));
+  const [auth, setAuth] = useState(() =>
+    JSON.parse(localStorage.getItem(storageKey) || localStorage.getItem(legacyStorageKey) || 'null'),
+  );
 
   const saveAuth = (payload) => {
     localStorage.setItem(storageKey, JSON.stringify(payload));
+    localStorage.removeItem(legacyStorageKey);
     setAuth(payload);
   };
 
@@ -54,4 +58,3 @@ export const useAuth = () => {
 
   return context;
 };
-

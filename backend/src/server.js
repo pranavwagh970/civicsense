@@ -27,7 +27,7 @@ app.use(morgan('dev'));
 
 app.get('/', (_req, res) => {
   res.json({
-    name: 'CivicSense API',
+    name: 'LokSetu API',
     status: 'running',
     phase: 'Phase 1 MERN foundation',
   });
@@ -41,6 +41,5 @@ app.use(notFound);
 app.use(errorHandler);
 
 app.listen(port, () => {
-  console.log(`CivicSense API listening on port ${port}`);
+  console.log(`LokSetu API listening on port ${port}`);
 });
-

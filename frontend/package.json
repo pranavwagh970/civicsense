@@ -1,7 +1,7 @@
 {
-  "name": "civicsense-frontend",
+  "name": "loksetu-frontend",
   "version": "1.0.0",
-  "description": "React frontend for the CivicSense civic complaint platform",
+  "description": "React frontend for the LokSetu Pune Municipal Corporation complaint platform",
   "type": "module",
   "scripts": {
     "dev": "vite",

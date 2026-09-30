@@ -1,7 +1,7 @@
 {
-  "name": "civicsense-backend",
+  "name": "loksetu-backend",
   "version": "1.0.0",
-  "description": "Express API for the CivicSense civic complaint platform",
+  "description": "Express API for the LokSetu Pune Municipal Corporation complaint platform",
   "type": "module",
   "main": "src/server.js",
   "scripts": {
@@ -21,4 +21,3 @@
     "nodemon": "^3.1.9"
   }
 }
-
